@@ -125,7 +125,7 @@ fi
 read -p "Enter your Solana address: " solana_address
 read -p "Enter the amount in Gwei (at least 1500000): " amount
 read -p "Enter your Ethereum Private Key: " ethereum_private_key
-echp -e "${RED}Please make sure you have sent  sepolia eth this ethereum address before proceeding ${RESET}"
+echo -e "${RED}Please make sure you have sent  sepolia eth this ethereum address before proceeding ${RESET}"
 read -p "Enter the number of times to repeat Transaction (4-5 tx Recommended): " repeat_count
 echo
 
