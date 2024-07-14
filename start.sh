@@ -107,7 +107,7 @@ fi
 
 node derive-wallet.js
 echo
-how
+
 echo -e "${YELLOW}Configuring Solana CLI...${NC}"
 echo
 solana config set --url https://testnet.dev2.eclipsenetwork.xyz/
