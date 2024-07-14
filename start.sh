@@ -53,7 +53,20 @@ echo
 
 echo -e "${YELLOW}Generating new Solana keypair...${NC}"
 echo
-solana-keygen new -o ~/my-wallet.json
+wallet_file="my-wallet.json"
+
+if [ -f ~/$wallet_file ]; then
+  echo "Wallet file already exists."
+  count=1
+  while [ -f ~/${wallet_file%.*}$count.${wallet_file##*.} ]; do
+    count=$((count+1))
+  done
+  solana-keygen new -o ~/${wallet_file%.*}$count.${wallet_file##*.}
+  echo "Wallet file created: ~/${wallet_file%.*}$count.${wallet_file##*.}"
+else
+  solana-keygen new -o ~/$wallet_file
+  echo "Wallet file created: ~/$wallet_file"
+fi
 echo
 echo -e "${YELLOW}Save these mnemonic phrases in safe Place.If there will any Airdrop in future, you will be eligible from this wallet so save it${NC}"
 echo
@@ -91,7 +104,7 @@ how
 echo -e "${YELLOW}Configuring Solana CLI...${NC}"
 echo
 solana config set --url https://testnet.dev2.eclipsenetwork.xyz/
-solana config set --keypair ~/my-wallet.json
+solana config set --keypair ~/$wallet_file
 echo
 echo -e "${GREEN}Solana Address: $(solana address)${NC}"
 echo
