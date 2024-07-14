@@ -109,7 +109,7 @@ node derive-wallet.js
 echo
 
 echo -e "${YELLOW}Configuring Solana CLI...${NC}"
-echo 
+echo "wallet_file: $HOME/$wallet_file"
 
 solana config set --keypair "$HOME/${wallet_file}"
 solana config set --url https://testnet.dev2.eclipsenetwork.xyz/
