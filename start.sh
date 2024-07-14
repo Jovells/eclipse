@@ -69,7 +69,8 @@ if [ -f ~/$wallet_file ]; then
     count=$((count+1))
   done
   solana-keygen new -o ~/${wallet_file%.*}$count.${wallet_file##*.}
-  echo "Wallet file created: ~/${wallet_file%.*}$count.${wallet_file##*.}"
+  wallet_file="${wallet_file%.*}$count.${wallet_file##*.}"
+  echo "Wallet file created: ~/${wallet_file}"
 else
   solana-keygen new -o ~/$wallet_file
   echo "Wallet file created: ~/$wallet_file"
