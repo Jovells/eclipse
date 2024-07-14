@@ -39,8 +39,15 @@ echo
 
 echo -e "${YELLOW}Cloning repository and installing npm dependencies...${NC}"
 echo
-git clone https://github.com/Eclipse-Laboratories-Inc/testnet-deposit
-cd testnet-deposit
+folder_name="testnet-deposit"
+count=1
+while [ -d "$folder_name-$count" ]; do
+  count=$((count+1))
+done
+folder_name="$folder_name-$count"
+
+git clone https://github.com/Eclipse-Laboratories-Inc/testnet-deposit "$folder_name"
+cd "$folder_name"
 npm install
 echo
 
