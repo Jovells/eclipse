@@ -101,15 +101,15 @@ if [ -d "testnet-deposit" ]; then
 fi
 
 read -p "Enter your Solana address: " solana_address
+read -p "Enter the amount in Gwei: " amount
 read -p "Enter your Ethereum Private Key: " ethereum_private_key
 read -p "Enter the number of times to repeat Transaction (4-5 tx Recommended): " repeat_count
-gas_limit="4000000"
 echo
 
 for ((i=1; i<=repeat_count; i++)); do
     echo -e "${YELLOW}Running Bridge Script (Tx $i)...${NC}"
     echo
-    node deposit.js "$solana_address" 0x11b8db6bb77ad8cb9af09d0867bb6b92477dd68e "$gas_limit" "$ethereum_private_key" https://1rpc.io/sepolia
+    node deposit.js "$solana_address" 0x11b8db6bb77ad8cb9af09d0867bb6b92477dd68e "$amount" "$ethereum_private_key" https://1rpc.io/sepolia
     echo
     sleep 3
 done
