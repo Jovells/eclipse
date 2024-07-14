@@ -87,7 +87,7 @@ fi
 
 node derive-wallet.js
 echo
-
+how
 echo -e "${YELLOW}Configuring Solana CLI...${NC}"
 echo
 solana config set --url https://testnet.dev2.eclipsenetwork.xyz/
@@ -101,7 +101,7 @@ if [ -d "testnet-deposit" ]; then
 fi
 
 read -p "Enter your Solana address: " solana_address
-read -p "Enter the amount in Gwei: " amount
+read -p "Enter the amount in Gwei (at least 1500000): " amount
 read -p "Enter your Ethereum Private Key: " ethereum_private_key
 read -p "Enter the number of times to repeat Transaction (4-5 tx Recommended): " repeat_count
 echo
